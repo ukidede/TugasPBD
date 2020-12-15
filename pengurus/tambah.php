@@ -1,6 +1,6 @@
 <?php
 
-include '../koneksi.php';
+include 'koneksi1.php';
 if (isset($_POST["submit"])) {
 
     if (tambah($_POST) > 0) {
@@ -77,8 +77,8 @@ if (isset($_POST["submit"])) {
                     <input type="text" class="form-control" id="Alamat" Alamat placeholder="Masukkan Alamat Anda" name="Alamat" Alamat ired>
                 </div>
                 <div class="form-group">
-                    <label for="Status">Status :</label>
-                    <input type="text" class="form-control" id="Status" Status placeholder="Masukkan Status Anda" name="Status" Status ired>
+                    <label for="Status_pengurus">Status :</label>
+                    <input type="text" class="form-control" id="Status_pengurus" Status_pengurus placeholder="Masukkan Status_pengurus Anda" name="Status_pengurus" Status_pengurus ired>
                 </div>
             </div><br>
             <button type="submit" class="btn btn-primary" name="tambah">Simpan</button>

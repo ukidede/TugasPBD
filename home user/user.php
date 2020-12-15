@@ -17,7 +17,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 
-<body id="page-top">
+<body class="bg-black" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
@@ -28,10 +28,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../about/about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../homeuser.php">Data Anggota</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Geleri</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#data1">Data Anggota</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#data2">Data Pengurus</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#data3">Jadwal Piket</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -46,93 +46,144 @@
             </div>
         </div>
     </header>
-    <!-- About-->
-    <section class="about-section text-center" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-                    <p class="text-white-50">
-                        Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                        <a href="https://startbootstrap.com/theme/grayscale/">the preview page</a>
-                        . The theme is open source, and you can use it for any purpose, personal or commercial.
-                    </p>
-                </div>
-            </div>
-            <img class="img-fluid" src="assets/img/ipad.png" alt="" />
+    <!-- Data Anggota -->
+    <?php
+    include "../koneksi.php";
+    session_start();
+    $tampil = mysqli_query($conn, "SELECT * FROM anggota_stt ");
+    ?>
+
+    <section class="dataanggota-section bg-black" id="data1" style="margin-bottom:150px">
+        <div class=" container bg-white">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr align="center">
+                        <th>Nama</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Nomer Hp</th>
+                        <th>Email</th>
+                        <th>Alamat</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    while ($a = mysqli_fetch_array($tampil)) {
+                        echo "
+                                       <tr>
+                                       <td>$a[Nama]</td>
+                                       <td>$a[Jenis_kelamin]</td>
+                                       <td>$a[Tempat_lahir]</td>
+                                       <td>$a[Tanggal_lahir]</td>
+                                       <td>$a[Nomer_Hp]</td>
+                                       <td>$a[Email]</td>
+                                       <td>$a[Alamat]</td>
+                                       <td>$a[Status]</td>
+                                       <td>
+                                       </td>
+                                   </tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </section>
-    <!-- Projects-->
-    <section class="projects-section bg-light" id="projects">
-        <div class="container">
-            <!-- Featured Project Row-->
-            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="" /></div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="featured-text text-center text-lg-left">
-                        <h4>Shoreline</h4>
-                        <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Project One Row-->
-            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-                <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="" /></div>
-                <div class="col-lg-6">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-left">
-                                <h4 class="text-white">Misty</h4>
-                                <p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-                                <hr class="d-none d-lg-block mb-0 ml-0" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Project Two Row-->
-            <div class="row justify-content-center no-gutters">
-                <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="" /></div>
-                <div class="col-lg-6 order-lg-first">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-right">
-                                <h4 class="text-white">Mountains</h4>
-                                <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-                                <hr class="d-none d-lg-block mb-0 mr-0" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- data Pengurus -->
+    <?php
+    include "../pengurus/koneksi1.php";
+    $hadir = mysqli_query($conn, "SELECT * FROM pengurus");
+    ?>
+
+    <section class="datapengurus-section bg-black" id="data2" style="margin-bottom:150px">
+        <div class="container bg-white">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr align="center">
+                        <th>Nama</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Nomer Hp</th>
+                        <th>Email</th>
+                        <th>Alamat</th>
+                        <th>Status Kepengurusan</th>
+                        <th>Acction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    while ($a = mysqli_fetch_array($hadir)) {
+                        echo "
+                                       <tr>
+                                       <td>$a[Nama]</td>
+                                       <td>$a[Jenis_kelamin]</td>
+                                       <td>$a[Tempat_lahir]</td>
+                                       <td>$a[Tanggal_lahir]</td>
+                                       <td>$a[Nomer_Hp]</td>
+                                       <td>$a[Email]</td>
+                                       <td>$a[Alamat]</td>
+                                       <td>$a[Status_pengurus]</td>
+                                       <td>
+                                       </td>
+                                   </tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </section>
-    <!-- Signup-->
-    <section class="signup-section" id="signup">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-lg-8 mx-auto text-center">
-                    <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                    <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                    <form class="form-inline d-flex">
-                        <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." />
-                        <button class="btn btn-primary mx-auto" type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
+    <!-- Jadwal Piket -->
+    <?php
+    include "../piket/koneksi2.php";
+    $tampill = mysqli_query($conn, "SELECT * FROM jadwal_piket");
+    ?>
+    <section class="datapengurus-section bg-black" id="data3" style="margin-bottom:150px">
+        <div class=" container bg-white">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Senin</th>
+                        <th>Selasa</th>
+                        <th>Rabu</th>
+                        <th>Kamis</th>
+                        <th>Jumat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    while ($a = mysqli_fetch_array($tampill)) {
+                        echo "
+                                       <tr>
+                                       <td>$a[Senin]</td>
+                                       <td>$a[Selasa]</td>
+                                       <td>$a[Rabu]</td>
+                                       <td>$a[Kamis]</td>
+                                       <td>$a[Jumat]</td>
+                                       <td>
+                                       </td>
+                                   </tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </section>
-    <!-- Contact-->
-    <section class="contact-section bg-black">
+    <!-- Contact -->
+    <section class="contact-section bg-black" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3 mb-md-0">
                     <div class="card py-4 h-100">
                         <div class="card-body text-center">
                             <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Address</h4>
+                            <h4 class="text-uppercase m-0">Alamat</h4>
                             <hr class="my-4" />
-                            <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                            <div class="small text-black-50">Jln Mayor Metra, Liligundi, Singarja, Bali</div>
                         </div>
                     </div>
                 </div>
@@ -142,7 +193,7 @@
                             <i class="fas fa-envelope text-primary mb-2"></i>
                             <h4 class="text-uppercase m-0">Email</h4>
                             <hr class="my-4" />
-                            <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                            <div class="small text-black-50"><a href="#!">STT.ABHIRAMA DEVARI@gmail.com</a></div>
                         </div>
                     </div>
                 </div>
@@ -166,7 +217,7 @@
     </section>
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
-        <div class="container">Copyright © Your Website 2020</div>
+        <div class="container">Copyright © STT ABHIRAMA DEVARI 2020</div>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

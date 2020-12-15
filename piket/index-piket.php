@@ -1,7 +1,7 @@
 <?php
-include "../koneksi.php";
+include "koneksi2.php";
 session_start();
-$tampil = mysqli_query($conn, "SELECT * FROM anggota_stt ");
+$tampill = mysqli_query($conn, "SELECT * FROM jadwal_piket");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,50 +32,44 @@ $tampil = mysqli_query($conn, "SELECT * FROM anggota_stt ");
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Data Anggota</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../admin/home.php">Data Anggota</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../pengurus/index-pengurus.php">Data Kepengurusan</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../piket/index-piket.php">Jadwal Piket</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index-piket.php">Jadwal Piket</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
     <section class="resume-section" id="wow">
         <div class="resume-section-content">
-            <h2 align="center" class="mb-5">Data Anggota STT ABHIRAMA DEVARI</h2>
+            <h2 align="center" class="mb-5">Jadwal Piket STT ABHIRAMA DEVARI</h2>
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div class="container">
-                    <p><a href="tambah.php"><button type="button" class="btn btn-primary">Tambah Data</button></p></a>
+                    <p><a href="tambah.php"><button type="button" class="btn btn-primary">Tambah Orang</button></p></a>
                     <table class="table">
                         <thead class="thead-dark">
-                            <tr align="center">
-                                <th>Nama</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Nomer Hp</th>
-                                <th>Email</th>
-                                <th>Alamat</th>
-                                <th>Status</th>
+                            <tr>
+                                <th>Senin</th>
+                                <th>Selasa</th>
+                                <th>Rabu</th>
+                                <th>Kamis</th>
+                                <th>Jumat</th>
                                 <th>Acction</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 
-                            while ($a = mysqli_fetch_array($tampil)) {
+                            while ($a = mysqli_fetch_array($tampill)) {
                                 echo "
                                        <tr>
-                                       <td>$a[Nama]</td>
-                                       <td>$a[Jenis_kelamin]</td>
-                                       <td>$a[Tempat_lahir]</td>
-                                       <td>$a[Tanggal_lahir]</td>
-                                       <td>$a[Nomer_Hp]</td>
-                                       <td>$a[Email]</td>
-                                       <td>$a[Alamat]</td>
-                                       <td>$a[Status]</td>
+                                       <td>$a[Senin]</td>
+                                       <td>$a[Selasa]</td>
+                                       <td>$a[Rabu]</td>
+                                       <td>$a[Kamis]</td>
+                                       <td>$a[Jumat]</td>
                                        <td>
                                            <a href='edit.php?id=$a[id]'><button type='button' class=' btn btn-success btn-sm'>Edit</button></a>
-                                           <a href='hapus.php?id=$a[id]'><button type='button' class=' btn btn-warning btn-sm'>Hapus</button></a>
+                                           <a href='hapus.php?id=$a[id]'><button type='button' class=' btn btn-warning  btn-sm'>Hapus</button></a>
                                        </td>
                                    </tr>";
                             }

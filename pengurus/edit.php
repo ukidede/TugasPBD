@@ -1,10 +1,10 @@
 <?php
 
-include '../koneksi.php';
+include 'koneksi1.php';
 $id = $_GET["id"];
-$stt = query("SELECT * FROM anggota_stt WHERE id = $id ")[0];
+$stt = ada("SELECT * FROM pengurus WHERE id = $id ")[0];
 if (isset($_POST["submit"])) {
-    if (edit($_GET) > 0) {
+    if (editt($_GET) > 0) {
 
         echo " 
                         <script>
@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
 <body>
 
     <div class="container">
-        <h2>Edit Data Anggota</h2>
+        <h2>Edit Data Kepengurusan</h2>
         <form action="edit-proses.php" method="POST" class="needs-validation" novalidate>
             <input type="hidden" name="id" value="<?= $stt["id"]; ?> ">
             <div class="form-group">
@@ -59,8 +59,8 @@ if (isset($_POST["submit"])) {
                 </div>
             </div>
             <div class="form-group">
-                <label for="Tempat_lahir">Tempat lahir:</label>
-                <input type="text" class="form-control" id="Tempat_lahir" placeholder="Masukkan Tempat_lahir Lengkap Anda" name="Tempat_lahir" required value="<?= $stt["Tempat_lahir"]; ?>">
+                <label for="Tempat_lahir">Tempat Lahir:</label>
+                <input type="text" class="form-control" id="Tempat_lahir" placeholder="Masukkan Tempat Lahir Anda" name="Tempat_lahir" required>
             </div>
             <div class="form-group">
                 <label for="Tanggal_lahir">Tanggal Lahir :</label>
@@ -79,8 +79,8 @@ if (isset($_POST["submit"])) {
                 <input type="text" class="form-control" id="Alamat" Alamat placeholder="Masukkan Alamat Anda" name="Alamat" required value="<?= $stt["Alamat"]; ?>">
             </div>
             <div class="form-group">
-                <label for="Status">Status :</label>
-                <input type="text" class="form-control" id="Status" Status placeholder="Masukkan Status Anda" name="Status" required value="<?= $stt["Status"]; ?>">
+                <label for="Status_pengurus">Status Kepengurusan :</label>
+                <input type="text" class="form-control" id="Status_pengurus" Status_pengurus placeholder="Masukkan Status Anda" name="Status_pengurus" required value="<?= $stt["Status_pengurus"]; ?>">
                 <div class="invalid-feedback">Nama harus diisi......!</div>
             </div>
             <button type="submit" class="btn btn-primary" name="update">Simpan</button>

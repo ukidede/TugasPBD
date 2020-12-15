@@ -28,10 +28,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../about/about.php">Upadate Jadwal Rapat</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../admin/home.php">Update Data Anggota</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact Kepengursan</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Update Geleri</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../about/about.php">Jadwal Rapat</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../admin/home.php">Data Anggota</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Data Kepengursan</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -49,7 +49,7 @@
 
     </section>
     <!-- Contact-->
-    <section class="contact-section bg-black">
+    <section class="contact-section bg-black" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3 mb-md-0">

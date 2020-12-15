@@ -7,7 +7,7 @@ $conn = mysqli_connect("localhost", "root", "", "form_login");
 // }
 
 
-function query($query)
+function ada($query)
 {
     global $conn;
     $result = mysqli_query($conn, $query);
@@ -18,14 +18,14 @@ function query($query)
     return $rows;
 }
 
-function hapus($id)
+function hapuss($id)
 {
     global $conn;
-    mysqli_query($conn, "DELETE FROM anggota_stt WHERE id= $id");
+    mysqli_query($conn, "DELETE FROM pengurus WHERE id= $id");
     return mysqli_affected_rows($conn);
 }
 
-function edit($data)
+function editt($data)
 {
     global $conn;
     $id = $data["id"];
@@ -36,7 +36,7 @@ function edit($data)
     $Nomer_Hp = htmlspecialchars($data["Nomer_Hp"]);
     $Email = htmlspecialchars($data["Email"]);
     $Alamat = htmlspecialchars($data["Alamat"]);
-    $Status = htmlspecialchars($data["Status"]);
+    $Status_pengurus = htmlspecialchars($data["Status_pengurus"]);
 
     $query = "UPDATE anggota_stt SET 
                 Nama='$Nama', 
@@ -46,7 +46,7 @@ function edit($data)
                 Nomer_Hp= '$Nomer_Hp', 
                 Email='$Email',
                 Alamat= '$Alamat',
-                Status= '$Status'
+                Status_pengurus= '$Status_pengurus'
             WHERE id= $id ";
 
     mysqli_query($conn, $query);
